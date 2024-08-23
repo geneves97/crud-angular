@@ -4,6 +4,7 @@ import { Observable, catchError, of } from 'rxjs';
 import { ErrorDialogComponent } from 'src/app/shared/components/error-dialog/error-dialog.component';
 import { Course } from '../model/course';
 import { CoursesService } from '../service/courses.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-courses',
@@ -17,14 +18,17 @@ export class CoursesComponent implements OnInit{
 
   constructor(
     public dialog: MatDialog,
-    private coursesService: CoursesService){
+    private coursesService: CoursesService,
+    private router: Router,
+    private route: ActivatedRoute
+  ){
     this.courses$ = this.coursesService.list()
     .pipe(
       catchError(error => {
         this.onError('Erro ao carregar cursos')
         return of([]);
       })
-      );
+    );
   }
   
   onError(errorMsg: string){
@@ -34,6 +38,10 @@ export class CoursesComponent implements OnInit{
   }
 
   ngOnInit(): void {
+  }
+
+  onAdd(){
+    this.router.navigate(['new'],{relativeTo: this.route})
   }
 
 }
