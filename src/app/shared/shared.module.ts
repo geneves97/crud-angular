@@ -5,7 +5,6 @@ import { ErrorDialogComponent } from './components/error-dialog/error-dialog.com
 import { CategoryPipe } from './pipes/category.pipe';
 
 
-
 @NgModule({
   declarations: [
     ErrorDialogComponent,
@@ -17,7 +16,8 @@ import { CategoryPipe } from './pipes/category.pipe';
   ],
   exports: [
     ErrorDialogComponent,
-    CategoryPipe
+    CategoryPipe,
+    
   ]
 })
 export class SharedModule { }
