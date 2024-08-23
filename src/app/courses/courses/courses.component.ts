@@ -13,7 +13,7 @@ import { CoursesService } from '../service/courses.service';
 export class CoursesComponent implements OnInit{
   
   courses$: Observable<Course[]>;
-  displayedColumns = ['name','category'];
+  displayedColumns = ['name','category','actions'];
 
   constructor(
     public dialog: MatDialog,
