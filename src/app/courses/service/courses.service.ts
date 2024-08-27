@@ -21,7 +21,7 @@ export class CoursesService {
     );
   }
 
-  save(record: Course){
+  save(record: Partial<Course>){
     return this.httClient.post<Course>(this.API, record).pipe(first());
   }
 }
