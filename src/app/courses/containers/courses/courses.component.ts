@@ -5,6 +5,7 @@ import { Observable, catchError, of } from 'rxjs';
 import { ErrorDialogComponent } from 'src/app/shared/components/error-dialog/error-dialog.component';
 import { Course } from '../../model/course';
 import { CoursesService } from '../../service/courses.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-courses',
@@ -13,14 +14,19 @@ import { CoursesService } from '../../service/courses.service';
 })
 export class CoursesComponent implements OnInit{
   
-  courses$: Observable<Course[]>;
+  courses$: Observable<Course[]> | null = null;
 
   constructor(
     public dialog: MatDialog,
     private coursesService: CoursesService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private snackBar: MatSnackBar,
   ){
+    this.refresh();
+  }
+
+  refresh(){
     this.courses$ = this.coursesService.list()
     .pipe(
       catchError(error => {
@@ -45,6 +51,20 @@ export class CoursesComponent implements OnInit{
 
   onEdit(course: Course){
     this.router.navigate(['edit', course.id],{relativeTo: this.route})
+  }
+
+  onRemove(course: Course){
+    this.coursesService.remove(course.id).subscribe(
+      () => {
+        this.refresh();
+        this.snackBar.open('Curso removido com sucesso.','X',{
+          duration: 3000,
+          verticalPosition: 'top',
+          horizontalPosition:'center'
+        });
+      },
+      error => this.onError('Erro ao tentar remover curso.')
+    )
   }
 
 }
