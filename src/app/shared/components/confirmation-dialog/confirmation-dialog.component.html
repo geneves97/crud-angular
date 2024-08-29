@@ -1,0 +1,12 @@
+<div class="dialog-container">
+  <h1 class="dialog-title">Confirmação</h1>
+  <div class="dialog-content">{{ data }}</div>
+  <div class="dialog-actions">
+    <button mat-raised-button color="primary" (click)="onConfirm(true)" class="mat-button-primary">
+      Sim
+    </button>
+    <button mat-raised-button color="warn" (click)="onConfirm(false)" class="mat-button-warn">
+      Não
+    </button>
+  </div>
+</div>

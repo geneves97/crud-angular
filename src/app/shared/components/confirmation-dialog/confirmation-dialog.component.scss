@@ -1,0 +1,37 @@
+.dialog-container {
+    padding: 24px; /* Espaçamento padrão do Material */
+    max-width: 400px; /* Define uma largura máxima para o diálogo */
+    text-align: center; /* Centraliza o texto */
+  }
+  
+  .dialog-title {
+    margin-bottom: 16px; /* Espaçamento entre o título e o conteúdo */
+    font-size: 20px; /* Tamanho da fonte para o título */
+    font-weight: 500; /* Negrito moderado */
+  }
+  
+  .dialog-content {
+    margin-bottom: 24px; /* Espaçamento entre o conteúdo e os botões */
+    font-size: 16px; /* Tamanho da fonte para o conteúdo */
+  }
+  
+  .dialog-actions {
+    display: flex;
+    justify-content: center; /* Centraliza os botões */
+    gap: 16px; /* Espaçamento entre os botões */
+  }
+  
+  /* Botões personalizados */
+  .mat-raised-button {
+    min-width: 100px; /* Define uma largura mínima para os botões */
+  }
+  
+  .mat-button-primary {
+    background-color: #1976d2; /* Azul padrão do Material Design */
+    color: white;
+  }
+  
+  .mat-button-warn {
+    background-color: #d32f2f; /* Vermelho de alerta padrão do Material Design */
+    color: white;
+  }
